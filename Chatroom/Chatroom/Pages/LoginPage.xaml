@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Chatroom.Pages.LoginPage">
+  <Grid>
+    <Image Source="loginpage.png" Aspect="AspectFill" />
+
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+      <Label Text="ENTER YOUR USERNAME" TextColor="White" HorizontalTextAlignment="Center" FontSize="Micro" FontAttributes="Bold" />
+      <Entry x:Name="UsernameEntry" Margin="0,6" HorizontalTextAlignment="Center" />
+      <Button x:Name="LoginButton" Text="GET STARTED" TextColor="White" BorderColor="White" BorderWidth="1" FontAttributes="Bold" />
+    </StackLayout>
+  </Grid>
+</ContentPage>

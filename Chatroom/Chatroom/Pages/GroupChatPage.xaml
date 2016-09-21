@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:converters="clr-namespace:Chatroom.Converters;assembly=Chatroom"
+             x:Class="Chatroom.Pages.GroupChatPage">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:DateTimeToStringConverter x:Key="dateConvert"></converters:DateTimeToStringConverter>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  
+  <Grid VerticalOptions="FillAndExpand">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <ListView x:Name="MessagesListView" Grid.Row="0"
+              HasUnevenRows="True" SeparatorVisibility="None" RowHeight="-1">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout Padding="12,12">
+              <Label Text="{Binding User}" FontSize="Small">
+                <Label.FontFamily>
+                  <OnPlatform x:TypeArguments="x:String">
+                    <OnPlatform.iOS>HelveticaNeue-Thin</OnPlatform.iOS>
+                    <OnPlatform.Android></OnPlatform.Android>
+                    <OnPlatform.WinPhone></OnPlatform.WinPhone>
+                  </OnPlatform>
+                </Label.FontFamily>
+              </Label>
+              <Label Text="{Binding Message}" FontSize="Large" Margin="0,-6,0,0" />
+              <Label Text="{Binding When, Converter={StaticResource dateConvert}}" FontSize="10" FontAttributes="Bold" TextColor="#AAAAAA" />
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+
+    <Grid Grid.Row="1">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="1" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+
+      <BoxView Grid.Row="0" BackgroundColor="#EEEEEE" Grid.ColumnSpan="2" />
+      <controls:ExtendedEntry x:Name="MessageEntry" Grid.Row="1" Grid.Column="0" HasBorder="False" PlaceholderTextColor="Gray" 
+                              Placeholder="Type message here" TextColor="Black" Margin="8,-6,8,0"/>
+      <Button x:Name="SendMessageButton" Text="Send" Grid.Row="1" Grid.Column="1" Margin="8, -6, 8, 0"/>
+      
+    </Grid>
+
+  </Grid>
+</ContentPage>
